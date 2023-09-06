@@ -114,6 +114,24 @@ if(isset($_REQUEST["date"])){
             }
         });
 
+    //pie chart
+    const pieChartData = {
+            labels: ['Adults', 'Kids Under 4', 'Kids 4 to 18 Years', 'Senior'],
+            datasets: [{
+                data: [adult, kidsUnder4 , kidsOver4 , senior],
+                backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)','rgba(11,156,49,0.4)'],
+                borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)' ,'rgba(11,156,49,1)'],
+                borderWidth: 1
+            }]
+        };
+
+    
+     // Create the pie chart
+    const pieChartCanvas = document.getElementById('pieChart').getContext('2d');
+        const pieChart = new Chart(pieChartCanvas, {
+            type: 'pie',
+            data: pieChartData
+        });
       
     </script>
 </body>
