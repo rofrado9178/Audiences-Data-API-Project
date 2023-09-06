@@ -68,18 +68,23 @@ if(isset($_REQUEST["date"])){
     <title>PHP Charts Example</title>
     <!-- Include Chart.js library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/charts.css">
 </head>
 <body>
-<section>
+<section class="form">
+ <label for="">Select Data By The Date</label>
     <form action="chart.php" method="POST">
         <input type="date" name="date">
         <input type="submit" value="Submit">
     </form>
 </section>
-    <div style="width: 50%; margin: auto;">
+
+    <section style="width: 50%; margin: auto;">
+        <h2>Data By : <?php echo $selectedDate ?></h2>
         <canvas id="barChart"></canvas>
+        <p>Pie Chart</p>
         <canvas id="pieChart"></canvas>
-    </div>
+    </section>
 
     <script>
       const adult = <?php echo $adult ?>;
@@ -93,8 +98,8 @@ if(isset($_REQUEST["date"])){
             labels: ['Adult', 'Kids Under 4 Years', 'Kids 4 to 18 Years', 'Senior'],
             datasets: [{
                 label: 'Bar Chart',
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)' ,'rgba(11,156,49,1)'],
+                borderColor: 'rgba(0, 0, 0, 1)',
                 borderWidth: 1,
                 data: [adult, kidsUnder4, kidsOver4, senior],
             }]
@@ -106,6 +111,7 @@ if(isset($_REQUEST["date"])){
             type: 'bar',
             data: barChartData,
             options: {
+                indexAxis: 'y',
                 scales: {
                     y: {
                         beginAtZero: true

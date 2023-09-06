@@ -29,6 +29,7 @@
         <input type="submit" value="Submit" />
       </form>
     </section>
+    <a href="chart.php">See Data</a>
   </body>
 </html>
 
