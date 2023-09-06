@@ -1,19 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chart</title>
-</head>
-<body>
-  <section>
-    <form action="chart.php" method="POST">
-      <input type="date" name="date">
-      <input type="submit" value="Submit">
-    </form>
-  </section>
-</body>
-</html>
 
 <?php 
 
@@ -51,13 +35,21 @@ if(isset($_REQUEST["date"])){
   }
 
   //add the result into variable;
-  $adult = $results[0]["adult"];
-  $kidUnder4 = $results[0]["kids_under_4"];
-  $kidsOver4 = $results[0]["kids_4_to_18"];
-  $senior = $results[0]["senior_over60"];
+  $adult = (int)$results[0]["SUM(adult)"];
+  $kidsUnder4 = (int)$results[0]["SUM(kids_under_4)"];
+  $kidsOver4 = (int)$results[0]["SUM(kids_4_to_18)"];
+  $senior = $results[0]["SUM(senior_over60)"];
+
+  // $adult = $results[0]["SUM(adult)"];
+  // $kidsUnder4 = $results[0]["SUM(kids_under_4)"];
+  // $kidsOver4 = $results[0]["SUM(kids_4_to_18)"];
+  // $senior = $results[0]["SUM(senior_over60)"];
 
   // echo json_encode($results);
   // echo $results[0]["ticket_id"];
+  // echo gettype($adult);
+  // echo $adult;
+  // header("Location: chart.php");
 
   mysqli_close($link);
 
@@ -66,3 +58,64 @@ if(isset($_REQUEST["date"])){
 }
 
 ?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Charts Example</title>
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<section>
+    <form action="chart.php" method="POST">
+        <input type="date" name="date">
+        <input type="submit" value="Submit">
+    </form>
+</section>
+    <div style="width: 50%; margin: auto;">
+        <canvas id="barChart"></canvas>
+        <canvas id="pieChart"></canvas>
+    </div>
+
+    <script>
+      const adult = <?php echo $adult ?>;
+      const kidsUnder4 = <?php echo $kidsUnder4 ?>;
+      const kidsOver4 = <?php echo $kidsOver4 ?>;
+      const senior = <?php echo $senior ?>;
+     
+      
+        // Sample data for the charts
+        const barChartData = {
+            labels: ['Adult', 'Kids Under 4 Years', 'Kids 4 to 18 Years', 'Senior'],
+            datasets: [{
+                label: 'Bar Chart',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1,
+                data: [adult, kidsUnder4, kidsOver4, senior],
+            }]
+        };
+
+        // Create the bar chart
+        const barChartCanvas = document.getElementById('barChart').getContext('2d');
+        const barChart = new Chart(barChartCanvas, {
+            type: 'bar',
+            data: barChartData,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+      
+    </script>
+</body>
+</html>
+
