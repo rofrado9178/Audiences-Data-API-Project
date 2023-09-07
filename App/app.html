@@ -4,18 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Audicence Page</title>
-    <link rel="stylesheet" href="css/app.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/charts.css" />
   </head>
   <body>
     <h1>welcome to admin panel</h1>
     <section>
       <h2>Select Date</h2>
-      <form id="form-submit" action="chart.php">
+      <form id="form-submit">
         <label for="date">insert date</label>
         <input type="date" name="date" />
 
         <input type="submit" value="Submit" />
       </form>
+    </section>
+
+    <section style="width: 50%; margin: auto">
+      <canvas id="barChart"></canvas>
+      <p>Pie Chart</p>
+      <canvas id="pieChart"></canvas>
     </section>
 
     <script src="js/main.js"></script>
