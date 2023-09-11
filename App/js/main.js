@@ -1,3 +1,4 @@
+//data fetching
 async function dataFetch(url) {
   const response = await fetch(url);
   const data = await response.json();
@@ -5,18 +6,9 @@ async function dataFetch(url) {
   console.log(data);
 }
 
-async function insertData(data, url) {
-  const response = await fetch(url, {
-    method: "POST",
-    body: data,
-  });
+//data insert function
 
-  const responseData = await response.json();
-  console.log(responseData);
-
-  showChart(responseData);
-}
-
+//submit date form
 const myForm = document.querySelector("#form-submit");
 
 myForm.addEventListener("submit", function (e) {
@@ -28,16 +20,18 @@ myForm.addEventListener("submit", function (e) {
   insertData(formData, url);
 });
 
+//submit ticket form
+
 // // CHART
 
 async function showChart(datas) {
-  console.log(datas);
   const adult = datas.map((data) => data["SUM(adult)"]);
   const kidsUnder4 = datas.map((data) => data["SUM(kids_under_4)"]);
   const kidsOver4 = datas.map((data) => data["SUM(kids_4_to_18)"]);
   const senior = datas.map((data) => data["SUM(senior_over60)"]);
   // Sample data for the charts
-  const barChartData = {
+  let barChartData;
+  barChartData = {
     labels: ["Adult", "Kids Under 4 Years", "Kids 4 to 18 Years", "Senior"],
     datasets: [
       {
@@ -54,9 +48,12 @@ async function showChart(datas) {
       },
     ],
   };
+
   // Create the bar chart
-  const barChartCanvas = document.getElementById("barChart").getContext("2d");
-  const barChart = new Chart(barChartCanvas, {
+
+  let barChartCanvas = document.getElementById("barChart").getContext("2d");
+
+  let barChart = new Chart(barChartCanvas, {
     type: "bar",
     data: barChartData,
     options: {
@@ -68,6 +65,7 @@ async function showChart(datas) {
       },
     },
   });
+
   //pie chart
   const pieChartData = {
     labels: ["Adults", "Kids Under 4", "Kids 4 to 18 Years", "Senior"],
@@ -91,8 +89,9 @@ async function showChart(datas) {
     ],
   };
   // Create the pie chart
+
   const pieChartCanvas = document.getElementById("pieChart").getContext("2d");
-  const pieChart = new Chart(pieChartCanvas, {
+  let pieChart = new Chart(pieChartCanvas, {
     type: "pie",
     data: pieChartData,
   });
