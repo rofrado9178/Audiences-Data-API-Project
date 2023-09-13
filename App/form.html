@@ -13,29 +13,50 @@
     <link rel="stylesheet" href="css/app.css" />
   </head>
   <body>
+    <header>
+      <nav>
+        <ul class="nav-ul">
+          <li>
+            <a href="../index.html">Home</a>
+          </li>
+          <li>
+            <a href="../documentation.html">Documentation</a>
+          </li>
+          <li>
+            <a href="form.html">Input Ticket</a>
+          </li>
+          <li>
+            <a href="showData.php">See All Data</a>
+          </li>
+          <li>
+            <a href="app.html">Search Audience Data</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
     <h1>welcome to admin panel</h1>
     <section>
-      <h2>insert audience info</h2>
       <form id="add-ticket">
+        <h2>insert audience info</h2>
         <label for="date">insert date</label>
         <input type="date" name="date" />
 
         <label for="">Adult</label>
-        <input type="number" name="adult" />
+        <input type="number" min="0" max="1000" name="adult" />
 
-        <label for="">Kids Between 0 to 4</label>
-        <input type="number" name="kids0to4" />
+        <label for="">Kids 0-4</label>
+        <input type="number" min="0" max="1000" name="kids0to4" />
 
-        <label for="">Kids Between 4 to 18</label>
-        <input type="number" name="kids4to18" />
+        <label for="">Kids 4-18</label>
+        <input type="number" min="0" max="1000" name="kids4to18" />
 
-        <label for="">Senior over 60</label>
-        <input type="number" name="senior" />
+        <label for="">Senior 60+</label>
+        <input type="number" min="0" max="1000" name="senior" />
 
-        <input type="submit" value="Submit" />
+        <input type="submit" value="book ticket" class="btn" />
       </form>
     </section>
-    <a href="app.html">See Data</a>
 
     <script src="js/addTicket.js"></script>
   </body>

@@ -14,7 +14,7 @@ body {
   text-decoration: none;
   color: white;
   padding: 20px 40px;
-  background: black;
+  background: #3c89e6;
   border-radius: 8px;
   border: 2px solid white;
   transition: 0.5s;
@@ -29,13 +29,11 @@ section {
 nav {
   padding: 20px;
   background: black;
-  position: fixed;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .nav-ul {
-  display: flex;
-  justify-content: flex-start;
   gap: 20px;
 }
 
@@ -72,4 +70,12 @@ img {
   color: black;
   border-color: black;
   transform: scale(1.2);
+}
+
+@media only screen and (min-width: 546px) {
+  .nav-ul {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+  }
 }
