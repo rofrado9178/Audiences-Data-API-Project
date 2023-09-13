@@ -29,93 +29,14 @@ myForm.addEventListener("submit", function (e) {
   const url = "./totalAudience.php";
   const formData = new FormData(myForm);
 
+  const chartTitle = document.querySelectorAll(".chart-title");
+
   insertData(formData, url);
+
+  chartTitle.forEach((item) => (item.style.display = "block"));
 });
 
 //submit ticket form
-
-// // CHART
-// let barChart;
-// let pieChart;
-// async function showChart(datas) {
-//   if (barChart) {
-//     barChart.destroy();
-//   }
-//   if (pieChart) {
-//     pieChart.destroy();
-//   }
-
-//   const adult = datas.map((data) => data["SUM(adult)"]);
-//   const kidsUnder4 = datas.map((data) => data["SUM(kids_under_4)"]);
-//   const kidsOver4 = datas.map((data) => data["SUM(kids_4_to_18)"]);
-//   const senior = datas.map((data) => data["SUM(senior_over60)"]);
-//   // Sample data for the charts
-//   let barChartData;
-//   barChartData = {
-//     labels: ["Adult", "Kids Under 4 Years", "Kids 4 to 18 Years", "Senior"],
-//     datasets: [
-//       {
-//         label: "Bar Chart",
-//         backgroundColor: [
-//           "rgba(255, 99, 132, 1)",
-//           "rgba(54, 162, 235, 1)",
-//           "rgba(255, 206, 86, 1)",
-//           "rgba(11,156,49,1)",
-//         ],
-//         borderColor: "rgba(0, 0, 0, 1)",
-//         borderWidth: 1,
-//         data: [adult, kidsUnder4, kidsOver4, senior],
-//       },
-//     ],
-//   };
-
-//   // Create the bar chart
-
-//   let barChartCanvas = document.getElementById("barChart").getContext("2d");
-
-//   let barChart = new Chart(barChartCanvas, {
-//     type: "bar",
-//     data: barChartData,
-//     options: {
-//       indexAxis: "y",
-//       scales: {
-//         y: {
-//           beginAtZero: true,
-//         },
-//       },
-//     },
-//   });
-
-//   //pie chart
-//   const pieChartData = {
-//     labels: ["Adults", "Kids Under 4", "Kids 4 to 18 Years", "Senior"],
-//     datasets: [
-//       {
-//         data: [adult, kidsUnder4, kidsOver4, senior],
-//         backgroundColor: [
-//           "rgba(255, 99, 132, 0.2)",
-//           "rgba(54, 162, 235, 0.2)",
-//           "rgba(255, 206, 86, 0.2)",
-//           "rgba(11,156,49,0.4)",
-//         ],
-//         borderColor: [
-//           "rgba(255, 99, 132, 1)",
-//           "rgba(54, 162, 235, 1)",
-//           "rgba(255, 206, 86, 1)",
-//           "rgba(11,156,49,1)",
-//         ],
-//         borderWidth: 1,
-//       },
-//     ],
-//   };
-//   // Create the pie chart
-
-//   const pieChartCanvas = document.getElementById("pieChart").getContext("2d");
-//   let pieChart = new Chart(pieChartCanvas, {
-//     type: "pie",
-//     data: pieChartData,
-//   });
-// }
 
 //new try add insert.
 
@@ -147,7 +68,6 @@ async function insertData(data, url) {
     labels: ["Adult", "Kids Under 4 Years", "Kids 4 to 18 Years", "Senior"],
     datasets: [
       {
-        label: "Bar Chart",
         backgroundColor: [
           "rgba(255, 99, 132, 1)",
           "rgba(54, 162, 235, 1)",
@@ -173,6 +93,13 @@ async function insertData(data, url) {
       scales: {
         y: {
           beginAtZero: true,
+        },
+      },
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false, // Hide the legend (labels on top of bars)
         },
       },
     },
@@ -206,5 +133,9 @@ async function insertData(data, url) {
   pieChart = new Chart(pieChartCanvas, {
     type: "pie",
     data: pieChartData,
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+    },
   });
 }

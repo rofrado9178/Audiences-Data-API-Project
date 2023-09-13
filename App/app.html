@@ -12,16 +12,15 @@
     <section>
       <h2>Select Date</h2>
       <form id="form-submit">
-        <label for="date">insert date</label>
-        <input type="date" name="date" />
-
-        <input type="submit" value="Submit" />
+        <input type="date" name="date" required />
+        <input class="btn" type="submit" value="Show Data" />
       </form>
     </section>
 
-    <section id="chart" style="width: 50%; margin: auto">
+    <section id="chart" style="width: 80%; height: 300px; margin: auto">
+      <h4 class="chart-title">bar chart</h4>
       <canvas id="barChart"></canvas>
-      <p>Pie Chart</p>
+      <h4 class="chart-title">pie chart</h4>
       <canvas id="pieChart"></canvas>
     </section>
 
