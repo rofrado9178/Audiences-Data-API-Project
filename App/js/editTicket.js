@@ -1,6 +1,7 @@
 const searchTicket = document.getElementById("search-id");
 const editForm = document.querySelector(".editForm");
 
+//function that create table
 async function displayTicket(data) {
   const newSection = document.createElement("article");
   const showData = document.querySelector(".showData");
@@ -48,6 +49,43 @@ closeBtn.addEventListener("click", function (e) {
   editForm.style.display = "none";
 });
 
+//function to show the table.
+async function showContent(
+  datas,
+  classId,
+  classAdult,
+  classKidsU4,
+  classKidsTo18,
+  classSenior,
+  element
+) {
+  if (element !== null) {
+    await datas.map((data) => {
+      const ticketId = document.querySelector(classId);
+      const adult = document.querySelector(classAdult);
+      const kidsU4 = document.querySelector(classKidsU4);
+      const kidsTo18 = document.querySelector(classKidsTo18);
+      const senior = document.querySelector(classSenior);
+
+      if (ticketId) {
+        ticketId.innerHTML = data.ticket_id;
+      }
+      if (adult) {
+        adult.innerHTML = data.adult;
+      }
+      if (kidsU4) {
+        kidsU4.innerHTML = data.kids_under_4;
+      }
+      if (kidsTo18) {
+        kidsTo18.innerHTML = data.kids_4_to_18;
+      }
+      if (senior) {
+        senior.innerHTML = data.senior_over60;
+      }
+    });
+  }
+}
+
 //insert and submit form
 async function insertTicketData(data, url) {
   const response = await fetch(url, {
@@ -56,7 +94,20 @@ async function insertTicketData(data, url) {
   });
   const responseData = await response.json();
   console.log(responseData);
-  displayTicket(responseData);
+
+  const showData = document.querySelector(".showData");
+  if (showData.childElementCount === 0) {
+    displayTicket(responseData);
+  } else {
+    showContent(
+      responseData,
+      ".ticketId",
+      ".adult",
+      ".kidsU4",
+      ".kidsTo18",
+      ".senior"
+    );
+  }
 }
 
 //add event listener to  search ticket by id form
@@ -78,20 +129,14 @@ async function updateTicketForm(data, url) {
   });
   const responseData = await response.json();
   console.log(responseData);
-  // displayTicket(...responseData);
-  // <td class='ticketId'>${data.ticket_id}</td>
-  //         <td class='adult'>${data.adult}</td>
-  //         <td class='kidsU4'>${data.kids_under_4}</td>
-  //         <td class='kidsTo18'>${data.kids_4_to_18}</td>
-  //         <td class='senior'>${data.senior_over60}</td>
-  //         <td class=''> <button class="edit">Edit</button> </td>
-  // const ticketId = document.querySelector(".ticketId");
-  // const adult = document.querySelector(".adult");
-  // const kidsU4 = document.querySelector(".kidsU4");
-  // const kidsTo18 = document.querySelector(".kidsTo18");
-  // const senior = document.querySelector(".senior");
-
-  // ticketId.innerHTML =
+  showContent(
+    responseData,
+    ".ticketId",
+    ".adult",
+    ".kidsU4",
+    ".kidsTo18",
+    ".senior"
+  );
 }
 
 //add event listener to edit ticket
