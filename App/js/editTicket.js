@@ -35,15 +35,16 @@ async function displayTicket(data) {
     `;
   });
 
+  //edit selector
   const editBtn = document.querySelector(".edit");
   editBtn.addEventListener("click", function (e) {
     e.preventDefault();
     editForm.style.display = "block";
   });
 }
-
+//close selector
 const closeBtn = document.querySelector(".closeBtn");
-
+//add evenlistener to close button
 closeBtn.addEventListener("click", function (e) {
   e.preventDefault();
   editForm.style.display = "none";
@@ -56,34 +57,21 @@ async function showContent(
   classAdult,
   classKidsU4,
   classKidsTo18,
-  classSenior,
-  element
+  classSenior
 ) {
-  if (element !== null) {
-    await datas.map((data) => {
-      const ticketId = document.querySelector(classId);
-      const adult = document.querySelector(classAdult);
-      const kidsU4 = document.querySelector(classKidsU4);
-      const kidsTo18 = document.querySelector(classKidsTo18);
-      const senior = document.querySelector(classSenior);
+  await datas.map((data) => {
+    const ticketId = document.querySelector(classId);
+    const adult = document.querySelector(classAdult);
+    const kidsU4 = document.querySelector(classKidsU4);
+    const kidsTo18 = document.querySelector(classKidsTo18);
+    const senior = document.querySelector(classSenior);
 
-      if (ticketId) {
-        ticketId.innerHTML = data.ticket_id;
-      }
-      if (adult) {
-        adult.innerHTML = data.adult;
-      }
-      if (kidsU4) {
-        kidsU4.innerHTML = data.kids_under_4;
-      }
-      if (kidsTo18) {
-        kidsTo18.innerHTML = data.kids_4_to_18;
-      }
-      if (senior) {
-        senior.innerHTML = data.senior_over60;
-      }
-    });
-  }
+    ticketId.innerHTML = data.ticket_id;
+    adult.innerHTML = data.adult;
+    kidsU4.innerHTML = data.kids_under_4;
+    kidsTo18.innerHTML = data.kids_4_to_18;
+    senior.innerHTML = data.senior_over60;
+  });
 }
 
 //insert and submit form
@@ -93,8 +81,9 @@ async function insertTicketData(data, url) {
     body: data,
   });
   const responseData = await response.json();
-  console.log(responseData);
+  // console.log(responseData);
 
+  //check if parent element already has children or not
   const showData = document.querySelector(".showData");
   if (showData.childElementCount === 0) {
     displayTicket(responseData);
