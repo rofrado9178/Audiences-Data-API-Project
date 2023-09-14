@@ -28,8 +28,6 @@ if(isset($_REQUEST["date"])){
 
 //loop through the row and give back the result as a json format
   
-  
-
   while($row = mysqli_fetch_assoc($result)){
 
     $results[] = $row;
@@ -37,9 +35,7 @@ if(isset($_REQUEST["date"])){
 
   //add the result into variable;
  
-
   echo json_encode($results);
-
 
   mysqli_close($link);
 

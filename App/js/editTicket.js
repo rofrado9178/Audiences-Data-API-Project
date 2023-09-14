@@ -79,6 +79,19 @@ async function updateTicketForm(data, url) {
   const responseData = await response.json();
   console.log(responseData);
   // displayTicket(...responseData);
+  // <td class='ticketId'>${data.ticket_id}</td>
+  //         <td class='adult'>${data.adult}</td>
+  //         <td class='kidsU4'>${data.kids_under_4}</td>
+  //         <td class='kidsTo18'>${data.kids_4_to_18}</td>
+  //         <td class='senior'>${data.senior_over60}</td>
+  //         <td class=''> <button class="edit">Edit</button> </td>
+  // const ticketId = document.querySelector(".ticketId");
+  // const adult = document.querySelector(".adult");
+  // const kidsU4 = document.querySelector(".kidsU4");
+  // const kidsTo18 = document.querySelector(".kidsTo18");
+  // const senior = document.querySelector(".senior");
+
+  // ticketId.innerHTML =
 }
 
 //add event listener to edit ticket
@@ -90,7 +103,7 @@ if (editForm) {
     const url = "./update.php";
     const updateTicketData = new FormData(updateTicket);
 
-    insertTicketData(updateTicketData, url);
+    updateTicketForm(updateTicketData, url);
 
     updateTicket.reset();
   });
