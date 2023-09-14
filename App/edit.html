@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Edit</title>
+    <link rel="stylesheet" href="css/edit.css" />
+  </head>
+  <body>
+    <section>
+      <form action="" id="search-id">
+        <label for="">Input your ticket ID</label>
+        <input type="number" name="ticket_id" required />
+        <input type="submit" class="btn" value="search ticket" />
+      </form>
+    </section>
+    <section class="showData"></section>
+    <section class="editForm">
+      <form id="edit-form">
+        <h3>UPDATE IS NOT FUNCTIONING YET</h3>
+        <h2>insert audience info</h2>
+        <label for="date">insert date</label>
+        <input type="date" name="date" />
+
+        <label for="">ticketId</label>
+        <input type="number" min="0" max="1000" name="ticket_id" />
+
+        <label for="">Adult</label>
+        <input type="number" min="0" max="1000" name="adult" />
+
+        <label for="">Kids 0-4</label>
+        <input type="number" min="0" max="1000" name="kids0to4" />
+
+        <label for="">Kids 4-18</label>
+        <input type="number" min="0" max="1000" name="kids4to18" />
+
+        <label for="">Senior 60+</label>
+        <input type="number" min="0" max="1000" name="senior" />
+
+        <input type="submit" value="edit ticket" class="submit-edit" />
+      </form>
+      <button class="closeBtn">Close</button>
+    </section>
+
+    <script src="js/editTicket.js"></script>
+  </body>
+</html>

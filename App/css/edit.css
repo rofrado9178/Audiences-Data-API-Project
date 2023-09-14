@@ -1,0 +1,48 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+  border: 1px solid #ccc;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 10px;
+}
+
+th {
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+td.ticket-id {
+  font-weight: bold;
+}
+
+button {
+  background: #3c89e6;
+  color: white;
+  border-color: transparent;
+  padding: 3px 5px;
+  border-radius: 4px;
+}
+
+button:hover {
+  background: black;
+}
+
+/* .editForm {
+  display: none;
+} */

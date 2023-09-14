@@ -3,10 +3,10 @@ async function dataFetch(url) {
   const response = await fetch(url);
   const data = await response.json();
 
-  console.log(data);
+  // console.log(data);
 }
 
-dataFetch("./showData.php");
+// dataFetch("./showData.php");
 
 // async function insertData(data, url) {
 //   const response = await fetch(url, {
@@ -49,7 +49,7 @@ async function insertData(data, url) {
   });
 
   const responseData = await response.json();
-  console.log(responseData);
+  // console.log(responseData);
 
   if (barChart) {
     barChart.destroy();
@@ -62,6 +62,8 @@ async function insertData(data, url) {
   const kidsUnder4 = responseData.map((data) => data["SUM(kids_under_4)"]);
   const kidsOver4 = responseData.map((data) => data["SUM(kids_4_to_18)"]);
   const senior = responseData.map((data) => data["SUM(senior_over60)"]);
+
+  console.log(senior, "this is from senior console");
   // Sample data for the charts
   let barChartData;
   barChartData = {
@@ -76,7 +78,7 @@ async function insertData(data, url) {
         ],
         borderColor: "rgba(0, 0, 0, 1)",
         borderWidth: 1,
-        data: [adult, kidsUnder4, kidsOver4, senior],
+        data: [adult[0], kidsUnder4[0], kidsOver4[0], senior[0]],
       },
     ],
   };
