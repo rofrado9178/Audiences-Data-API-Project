@@ -7,11 +7,35 @@
     <link rel="stylesheet" href="css/edit.css" />
   </head>
   <body>
+    <header>
+      <nav>
+        <ul class="nav-ul">
+          <li>
+            <a href="/dynamic/Audiences-Data-API-Project/index.html">Home</a>
+          </li>
+          <li>
+            <a href="/dynamic/Audiences-Data-API-Project/documentation.html">Documentation</a>
+          </li>
+          <li>
+            <a href="/dynamic/Audiences-Data-API-Project/App/form.html">Input Ticket</a>
+          </li>
+          <li>
+            <a href="/dynamic/Audiences-Data-API-Project/App/showData.php">See All Data</a>
+          </li>
+          <li>
+            <a href="/dynamic/Audiences-Data-API-Project/App/app.html">Search Audience Data</a>
+          </li>
+          <li>
+            <a href="/dynamic/Audiences-Data-API-Project/App/edit.html">Search Ticket</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
     <section>
       <form action="" id="search-id">
-        <label for="">Input your ticket ID</label>
-        <input type="number" name="ticket_id" required />
-        <input type="submit" class="btn" value="search ticket" />
+        <label for="">Input Booking ID</label>
+        <input type="number" name="ticket_id" placeholder="input booking id" required/>
+        <input type="submit" class="btn" value="search" />
       </form>
     </section>
     <section class="showData"></section>
@@ -21,8 +45,8 @@
         <label for="date">insert date</label>
         <input type="date" name="date" />
 
-        <label for="">ticketId</label>
-        <input type="number" min="0" max="1000" name="ticket_id" />
+        <label for="">Booking ID</label>
+        <input type="number" min="0" max="1000" name="ticket_id" class="bookingId"/>
 
         <label for="">Adult</label>
         <input type="number" min="0" max="1000" name="adult" />
@@ -36,7 +60,7 @@
         <label for="">Senior 60+</label>
         <input type="number" min="0" max="1000" name="senior" />
 
-        <input type="submit" value="edit ticket" class="submit-edit" />
+        <input type="submit" value="Update Data" class="submit-edit btn" />
       </form>
       <button class="closeBtn">Close</button>
     </section>

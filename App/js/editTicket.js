@@ -1,6 +1,11 @@
+let isLoggin = true;
+if (isLoggin !== true) {
+  location.href = "../documentaion.html";
+}
+
 const searchTicket = document.getElementById("search-id");
 const editForm = document.querySelector(".editForm");
-
+let bookingId;
 //function that create table
 async function displayTicket(data) {
   const newSection = document.createElement("article");
@@ -12,33 +17,35 @@ async function displayTicket(data) {
     <table>
       <thead>
         <tr>
-          <th>Ticket ID</th>
+          <th>Booking ID</th>
+          <th>Date</th>
           <th>Adult</th>
           <th>Kids Under 4</th>
           <th>Kids 4 to 18</th>
           <th>Senior 60+ </th>
-          <th>Edit</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td class='ticketId'>${data.ticket_id}</td>
+          <td class='date'>${data.date}</td>
           <td class='adult'>${data.adult}</td>
           <td class='kidsU4'>${data.kids_under_4}</td>
           <td class='kidsTo18'>${data.kids_4_to_18}</td>
           <td class='senior'>${data.senior_over60}</td>
-          <td class=''> <button class="edit">Edit</button> </td>
         </tr>
       </tbody>
     </table>
-
+    <button class="edit">Edit</button>
     `;
   });
 
   //edit selector
   const editBtn = document.querySelector(".edit");
+  // const idInput = document.querySelector(".bookingId");
   editBtn.addEventListener("click", function (e) {
     e.preventDefault();
+    // idInput.setAttribute("value", `${bookingId}`);
     editForm.style.display = "block";
   });
 }
@@ -54,6 +61,7 @@ closeBtn.addEventListener("click", function (e) {
 async function showContent(
   datas,
   classId,
+  classDate,
   classAdult,
   classKidsU4,
   classKidsTo18,
@@ -61,12 +69,14 @@ async function showContent(
 ) {
   await datas.map((data) => {
     const ticketId = document.querySelector(classId);
+    const date = document.querySelector(classDate);
     const adult = document.querySelector(classAdult);
     const kidsU4 = document.querySelector(classKidsU4);
     const kidsTo18 = document.querySelector(classKidsTo18);
     const senior = document.querySelector(classSenior);
 
     ticketId.innerHTML = data.ticket_id;
+    date.innerHTML = data.date;
     adult.innerHTML = data.adult;
     kidsU4.innerHTML = data.kids_under_4;
     kidsTo18.innerHTML = data.kids_4_to_18;
@@ -91,6 +101,7 @@ async function insertTicketData(data, url) {
     showContent(
       responseData,
       ".ticketId",
+      ".date",
       ".adult",
       ".kidsU4",
       ".kidsTo18",
@@ -121,6 +132,7 @@ async function updateTicketForm(data, url) {
   showContent(
     responseData,
     ".ticketId",
+    ".date",
     ".adult",
     ".kidsU4",
     ".kidsTo18",
