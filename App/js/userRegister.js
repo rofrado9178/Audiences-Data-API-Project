@@ -10,7 +10,7 @@ async function registerUser(data, url) {
     }
 
     const responseData = await response.json();
-
+    register.reset();
     // console.log(JSON.parse(responseData));
   } catch (error) {
     console.error("Error oocurred", error);
@@ -24,6 +24,6 @@ register.addEventListener("submit", function (e) {
   const registerUrl = "./register.php";
 
   const userRegistration = new FormData(register);
-  console.log(userRegistration);
+  // console.log(userRegistration);
   registerUser(userRegistration, registerUrl);
 });
