@@ -3,9 +3,9 @@
 require_once "./_includes/db_connect.php";
 
 
-
-
 if(isset($_REQUEST["username"]) && isset($_REQUEST["password_1"]) && isset($_REQUEST["password_2"])){
+  
+  
   $query = "INSERT INTO users(username, password) VALUES (?, ?)";
 
   $insertData = 0;
@@ -41,6 +41,7 @@ if(isset($_REQUEST["username"]) && isset($_REQUEST["password_1"]) && isset($_REQ
   
   }
 }
+
 
 
 

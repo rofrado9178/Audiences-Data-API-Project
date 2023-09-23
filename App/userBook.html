@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Audicence Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul class="nav-ul">
+          <li>
+            <a href="../index.html">Home</a>
+          </li>
+          <li>
+            <a href="../documentation.html">Documentation</a>
+          </li>
+          <li>
+            <a href="form.html">Input Ticket</a>
+          </li>
+          <li>
+            <a href="showData.php">See All Data</a>
+          </li>
+          <li>
+            <a href="app.html">Search Audience Data</a>
+          </li>
+          <li>
+            <a href="edit.html">Search Ticket</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <h1>welcome to admin panel</h1>
+    <section>
+      <form id="add-ticket">
+        <h2>insert audience info</h2>
+        <label for="date">insert date</label>
+        <input type="date" name="date" />
+
+        <label for="">Adult</label>
+        <input type="number" min="0" max="1000" name="adult" />
+
+        <label for="">Kids 0-4</label>
+        <input type="number" min="0" max="1000" name="kids0to4" />
+
+        <label for="">Kids 4-18</label>
+        <input type="number" min="0" max="1000" name="kids4to18" />
+
+        <label for="">Senior 60+</label>
+        <input type="number" min="0" max="1000" name="senior" />
+
+        <input type="submit" value="book ticket" class="btn" />
+      </form>
+    </section>
+
+    <script src="js/addTicket.js"></script>
+  </body>
+</html>
