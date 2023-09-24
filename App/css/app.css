@@ -90,6 +90,13 @@ h2 {
   margin-bottom: 20px;
 }
 
+.block-input {
+  display: block;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media only screen and (min-width: 546px) {
   .nav-ul {
     display: flex;

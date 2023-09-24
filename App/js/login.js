@@ -12,7 +12,7 @@ async function login(data, url) {
       // console.log(response);
     }
 
-    window.location.href = "./userBook.html";
+    window.location.href = "./mybooking.html";
     const responseData = await response.json();
     // console.log(JSON.parse(responseData));
   } catch (error) {

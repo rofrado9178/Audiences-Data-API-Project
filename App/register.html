@@ -4,23 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register</title>
+    <link rel="stylesheet" href="css/app.css" />
   </head>
   <body>
     <section>
       <h1>user registration</h1>
       <form id="register">
-        <input type="text" placeholder="Username" name="username" />
+        <label for="">Input Username</label>
+        <input
+          type="text"
+          placeholder="Username"
+          name="username"
+          class="block-input"
+        />
+        <label for="">Input Password</label>
         <input
           type="password"
           placeholder="Enter your password"
           name="password_1"
+          class="block-input"
         />
+        <label for="">Re-Type Your Password</label>
         <input
           type="password"
           placeholder="Enter your password"
           name="password_2"
+          class="block-input"
         />
-        <input type="submit" value="Register" />
+        <input type="submit" value="Register" class="btn" />
       </form>
     </section>
 
